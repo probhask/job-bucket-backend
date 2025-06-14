@@ -2,9 +2,15 @@ import { server } from 'app';
 import mongoose from 'mongoose';
 import config from '@config/config';
 import logger from '@config/logger';
+import { MODEL } from 'models';
 
-mongoose.connect(config.databaseUri).then(() => {
+mongoose.connect(config.databaseUri).then(async () => {
   logger.info('Connected to MongoDB');
+
+  // ✅ Sync indexes for all models
+  await Promise.all([MODEL.User.syncIndexes()]);
+
+  logger.info('Indexes synced successfully ');
 });
 
 const exitHandler = () => {
