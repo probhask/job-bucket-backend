@@ -1,0 +1,7 @@
+{
+  "watch": ["src", ".env"],
+  "ext": "ts,js,json,env",
+  "ignore": ["build", "node_modules"],
+  "exec": "cross-env TS_NODE_LOG_ERROR=true node --inspect -r ts-node/register -r tsconfig-paths/register ./src/index.ts",
+  "verbose": true
+}
