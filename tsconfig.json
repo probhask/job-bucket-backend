@@ -15,10 +15,25 @@
     "baseUrl": "./src",
 
     "paths": {
+      "@/*": ["*"],
       "@config/*": ["config/*"],
       "@config": ["config"],
       "@constants": ["constants"],
-      "@constants/*": ["constants/*"]
+      "@constants/*": ["constants/*"],
+      "@services/*": ["services/*"],
+      "@services": ["services"],
+      "@controllers/*": ["controllers/*"],
+      "@controllers": ["controllers"],
+      "@middlewares/*": ["middlewares/*"],
+      "@middlewares": ["middlewares"],
+      "@models/*": ["models/*"],
+      "@models": ["models"],
+      "@utils/*": ["utils/*"],
+      "@utils": ["utils"],
+      "@schemas/*": ["schemas/*"],
+      "@schemas": ["schemas"],
+      "@validations/*": ["validations/*"],
+      "@validations": ["validations"]
     },
 
     // Ensure this path is correct
