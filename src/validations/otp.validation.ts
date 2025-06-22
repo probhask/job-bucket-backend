@@ -34,13 +34,6 @@ export const verifyPhoneOtpSchema = {
     phone: Joi.string().required().messages({
       'any.required': 'Phone is required',
     }),
-  }),
-};
-export const verifyPhoneOtpWithCodeSchema = {
-  body: Joi.object({
-    phone: Joi.string().required().messages({
-      'any.required': 'Phone is required',
-    }),
     otp: Joi.string().required().messages({
       'any.required': 'OTP is required',
     }),
