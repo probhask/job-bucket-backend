@@ -37,6 +37,14 @@ const envVarsSchema = Joi.object()
       )
       .description('NODE_ENV is required')
       .required(),
+
+    // email service configuration
+    SEND_GRID_API_KEY: Joi.string()
+      .required()
+      .description('SEND_GRID_API_KEY is required'),
+    SEND_GRID_FROM_EMAIL: Joi.string()
+      .required()
+      .description('SEND_GRID_FROM_EMAIL is required'),
   })
   .unknown();
 
@@ -61,4 +69,8 @@ export default {
   },
   appFrontendUrl: envVars.APP_FRONTEND_URL,
   env: envVars.NODE_ENV,
+  sendGrid: {
+    from: envVars.SEND_GRID_FROM_EMAIL,
+    apiKey: envVars.SEND_GRID_API_KEY,
+  },
 };
