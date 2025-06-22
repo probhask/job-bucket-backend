@@ -33,7 +33,9 @@
       "@schemas/*": ["schemas/*"],
       "@schemas": ["schemas"],
       "@validations/*": ["validations/*"],
-      "@validations": ["validations"]
+      "@validations": ["validations"],
+      "@routes/*": ["routes/*"],
+      "@routes": ["routes"]
     },
 
     // Ensure this path is correct
