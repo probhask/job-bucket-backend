@@ -1,3 +1,4 @@
+import { IToken } from '@/types/models';
 import { model, Schema, SchemaTypes } from 'mongoose';
 
 enum TokenType {
@@ -5,7 +6,7 @@ enum TokenType {
   REFRESH,
   RESET_PASSWORD,
 }
-const tokenSchema = new Schema(
+const tokenSchema = new Schema<IToken>(
   {
     token: {
       type: String,

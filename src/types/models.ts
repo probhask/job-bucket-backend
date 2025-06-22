@@ -1,4 +1,4 @@
-import { Document } from 'mongoose';
+import { Document, Types } from 'mongoose';
 import { Role } from '@/types';
 
 export interface IUser extends Document {
@@ -13,11 +13,21 @@ export interface IUser extends Document {
 }
 
 export interface IOtp extends Document {
-  userId?: string;
+  userId?: Types.ObjectId;
   email?: string;
   phone?: string;
   otp: string;
   expiresAt?: Date;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+export interface IToken extends Document {
+  token: string;
+  type: string;
+  userId: Types.ObjectId;
+  expiresAt: Date;
+  blacklisted: boolean;
   createdAt: Date;
   updatedAt: Date;
 }
