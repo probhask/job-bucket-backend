@@ -41,13 +41,10 @@ export const sendEmail = async ({
  * @param {string} otp - OTP to send
  */
 
-export const sendEmailVerification = async ({
-  email,
-  otp,
-}: {
-  email: string;
-  otp: string;
-}): Promise<void> => {
+export const sendEmailVerification = async (
+  email: string,
+  otp: string,
+): Promise<void> => {
   await sendEmail({
     subject: 'Verify your email',
     text: `Your OTP is ${otp}`,

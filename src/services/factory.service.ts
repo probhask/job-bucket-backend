@@ -50,10 +50,12 @@ export async function updateOneDoc<T extends Document>(
   model: Model<T>,
   filter: FilterQuery<T>,
   update: UpdateQuery<T>,
+  projection?: any,
   options?: QueryOptions,
 ): Promise<T | null> {
   return model
     .findOneAndUpdate(filter, update, { new: true, ...options })
+    .select(projection || {})
     .exec();
 }
 
@@ -70,6 +72,7 @@ export async function upsertOneDoc<T extends Document>(
   model: Model<T>,
   filter: FilterQuery<T>,
   update: UpdateQuery<T>,
+  projection?: any,
   options?: QueryOptions,
 ): Promise<T | null> {
   return model
@@ -79,27 +82,37 @@ export async function upsertOneDoc<T extends Document>(
       setDefaultsOnInsert: true,
       ...options,
     })
+    .select(projection || {})
     .exec();
 }
 
 // Delete by ID
-export const deleteById = async <T>(model: Model<T>, id: string) => {
-  return await model.findByIdAndDelete(id);
+export const deleteById = async <T>(
+  model: Model<T>,
+  id: string,
+  projection?: any,
+) => {
+  return await model.findByIdAndDelete(id).select(projection || {});
 };
 
 // Delete one document
 export async function deleteOneDoc<T extends Document>(
   model: Model<T>,
   filter: FilterQuery<T>,
+  projection?: any,
   options?: QueryOptions,
 ): Promise<T | null> {
-  return model.findOneAndDelete(filter, options).exec();
+  return model
+    .findOneAndDelete(filter, options)
+    .select(projection || {})
+    .exec();
 }
 
 // Delete many documents
 export async function deleteManyDocs<T extends Document>(
   model: Model<T>,
   filter: FilterQuery<T>,
+  projection?: any,
   options?: QueryOptions,
 ): Promise<{ deletedCount?: number }> {
   return model.deleteMany(filter).exec();

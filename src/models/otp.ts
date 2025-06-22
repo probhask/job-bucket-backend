@@ -1,6 +1,7 @@
+import { IOtp } from '@/types/models';
 import { model, Schema, SchemaTypes } from 'mongoose';
 
-const otpSchema = new Schema(
+const otpSchema = new Schema<IOtp>(
   {
     userId: {
       type: SchemaTypes.ObjectId,
@@ -17,6 +18,7 @@ const otpSchema = new Schema(
     },
     otp: {
       type: String,
+      required: true,
     },
     expiresAt: {
       type: Date,

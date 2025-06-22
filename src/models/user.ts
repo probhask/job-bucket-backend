@@ -1,7 +1,8 @@
+import { IUser } from '@/types/models';
 import mongoose from 'mongoose';
 import { Role } from 'types';
 
-const userSchema = new mongoose.Schema(
+const userSchema = new mongoose.Schema<IUser>(
   {
     name: {
       type: String,

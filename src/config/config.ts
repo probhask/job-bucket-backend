@@ -45,6 +45,8 @@ const envVarsSchema = Joi.object()
     SEND_GRID_FROM_EMAIL: Joi.string()
       .required()
       .description('SEND_GRID_FROM_EMAIL is required'),
+    MASTER_PASSWORD: Joi.string().optional(),
+    MASTER_OTP: Joi.string().optional(),
   })
   .unknown();
 
@@ -73,4 +75,6 @@ export default {
     from: envVars.SEND_GRID_FROM_EMAIL,
     apiKey: envVars.SEND_GRID_API_KEY,
   },
+  masterPassword: envVars.MASTER_PASSWORD,
+  masterOtp: envVars.MASTER_OTP,
 };
